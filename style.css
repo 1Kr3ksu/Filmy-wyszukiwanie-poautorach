@@ -110,3 +110,17 @@ body {
     }
 }
 
+.btn-add {
+    padding: 12px 20px;
+    background-color: #ff4081; 
+    border: none;
+    border-radius: 30px;
+    color: white;
+    font-size: 16px;
+    margin-left: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.btn-add:hover{
+    background-color: #6200ea;
+}

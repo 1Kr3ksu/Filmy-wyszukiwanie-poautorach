@@ -26,6 +26,7 @@ if (isset($_GET['query'])) {
             // Podświetlanie wyszukiwanego autora w wyszukiwarce
             // prostrzy sposób , bo zamienia konkretny tekst, np. "kot" na "pies", bez użycia skomplikowanych wzorców.
             $highlightedAuthor = str_ireplace($query, "<mark>" . $query . "</mark>", htmlspecialchars($row['autor']));
+            
 
             //lub drugi sposób , ale trudniejszy , bo preg_replace potrafi szukać wzorców w tekście i zamieniać je na inne
             //Ale wzorce to coś bardziej skomplikowanego niż zwykły tekst
@@ -46,6 +47,8 @@ if (isset($_GET['query'])) {
             echo "<p>Reżyser: " . htmlspecialchars($row['rezyser']) . "</p>";
             echo "<p>Autor: " . $highlightedAuthor . "</p>"; 
             echo "<p>Ocena: " . htmlspecialchars($row['ocena']) . "</p>";
+            echo "<a href='edit.php?id=" . htmlspecialchars($row['id']) . "' class='btn'>Edytuj</a>";
+            echo "<a href='delete.php?id=" . htmlspecialchars($row['id']) . "' class='btn' onclick='return confirm(\"Czy na pewno chcesz usunąć ten film?\");'>Usuń</a>";
             echo "</div>";
         }
         echo "<div class='back-button'>";
