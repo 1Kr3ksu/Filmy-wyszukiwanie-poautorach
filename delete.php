@@ -9,6 +9,18 @@ if (isset($_GET['id'])) {
     $stmt->bind_param("i", $id);
     $stmt->execute();
     $result = $stmt->get_result();
+    if (isset($_GET['confirm']) && $_GET['confirm'] === "yes") {
+        $stmt = $conn->prepare("DELETE FROM filmy WHERE id = ?");
+        $stmt->bind_param("i", $id);
+    
+        if ($stmt->execute()) {
+            header("Location: index.php?message=Film został usunięty");
+            exit();
+        } else {
+            echo "Błąd podczas usuwania filmu.";
+        }
+    }
+    
 
     if ($result->num_rows > 0) {
         $row = $result->fetch_assoc();
