@@ -1,4 +1,15 @@
- 
+ <!DOCTYPE html>
+ <html lang="pl">
+ <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filmy</title>
+    <link rel="stylesheet" href="css/edit.css">
+ </head>
+ <body>
+    
+ </body>
+ </html>
  <?php
 include "db_connection.php";
 
@@ -12,6 +23,7 @@ if (isset($_GET['id'])) {
     if ($result->num_rows > 0) {
         $row = $result->fetch_assoc();
         ?>
+        <div class="form-container">
         <form action="update_film.php" method="post">
             <input type="hidden" name="id" value="<?php echo htmlspecialchars($row['id']); ?>">
             <label for="nazwa_filmu">Nazwa filmu:</label>
@@ -28,10 +40,11 @@ if (isset($_GET['id'])) {
             <input type="text" name="autor" value="<?php echo htmlspecialchars($row['autor']); ?>" readonly>
             <label for="ocena">Ocena:</label>
             <input type="number" step="0.1" name="ocena" value="<?php echo htmlspecialchars($row['ocena']); ?>" required>
-            <button type="submit">Zapisz zmiany</button>
+            <button type="submit-edit">Zapisz zmiany</button>
         </form>
         <div class="back-button">
-            <a href="index.php?query=" class="btn">Powrót</a>
+            <a href="index.php?query=" class="btn-back">Powrót</a>
+        </div>
         </div>
         <?php
     } else {

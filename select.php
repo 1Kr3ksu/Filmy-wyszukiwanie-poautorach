@@ -32,12 +32,12 @@ if (isset($_GET['query'])) {
             echo "<p>Reżyser: " . htmlspecialchars($row['rezyser']) . "</p>";
             echo "<p>Autor: " . $highlightedAuthor . "</p>"; 
             echo "<p>Ocena: " . htmlspecialchars($row['ocena']) . "</p>";
-            echo "<a href='edit.php?id=" . htmlspecialchars($row['id']) . "' class='btn'>Edytuj</a>";
-            echo "<a href='delete.php?id=" . htmlspecialchars($row['id']) . "' class='btn' onclick='return confirm(\"Czy na pewno chcesz usunąć ten film?\");'>Usuń</a>";
+            echo "<a href='edit.php?id=" . htmlspecialchars($row['id']) . "' class='btn-edit'>Edytuj</a>";
+            echo "<a href='delete.php?id=" . htmlspecialchars($row['id']) . "' class='btn-delete' onclick='return confirm(\"Czy na pewno chcesz usunąć ten film?\");'>Usuń</a>";
             echo "</div>";
         }
         echo "<div class='back-button'>";
-        echo "<a href='index.php?query=' class='btn'>Powrót</a>";
+        echo "<a href='index.php?query=' class='btn-back'>Powrót</a>";
         echo "</div>";
     } else {
         echo "<p>Brak wyników dla zapytania: " . htmlspecialchars($query) . "</p>";
