@@ -24,5 +24,9 @@
     <?php
     require_once "select.php"
     ?>
+     <script src="js/fadein.js" defer></script>
+    
+
+
 </body>
 </html>
