@@ -23,9 +23,9 @@ if (isset($_GET['id'])) {
             <label for="gatunek">Gatunek:</label>
             <input type="text" name="gatunek" value="<?php echo htmlspecialchars($row['gatunek']); ?>" required>
             <label for="rezyser">Reżyser:</label>
-            <input type="text" name="rezyser" value="<?php echo htmlspecialchars($row['rezyser']); ?>" required>
+            <input type="text" name="rezyser" value="<?php echo htmlspecialchars($row['rezyser']); ?>" readonly>
             <label for="autor">Autor:</label>
-            <input type="text" name="autor" value="<?php echo htmlspecialchars($row['autor']); ?>" required>
+            <input type="text" name="autor" value="<?php echo htmlspecialchars($row['autor']); ?>" readonly>
             <label for="ocena">Ocena:</label>
             <input type="number" step="0.1" name="ocena" value="<?php echo htmlspecialchars($row['ocena']); ?>" required>
             <button type="submit">Zapisz zmiany</button>

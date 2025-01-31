@@ -1,0 +1,4 @@
+readonly np w input jest ukrytym polem 
+powoduje to ze widzimi np nazwe autora ale nie mozemy jej edytowac ani nic z nia zrobic
+required – pole musi być wypełnione, inaczej formularz nie zostanie wysłany.
+disabled – pole jest zablokowane i nie jest przesyłane w formularzu.
