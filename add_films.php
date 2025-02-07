@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dodaj film</title>
     <link rel="stylesheet" href="css/addfilms.css">
+    <link rel="icon" href="img/logo.webp" type="image/png">
 </head>
 <body>
 
