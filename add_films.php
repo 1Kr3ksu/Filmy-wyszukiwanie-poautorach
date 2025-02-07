@@ -35,30 +35,40 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $conn->close();
 } else {
     ?>
-    <form action="add_films.php" method="post">
-        <label for="nazwa_filmu">Nazwa filmu:</label>
-        <input type="text" name="nazwa_filmu" required>
-        
-        <label for="opis">Opis:</label>
-        <textarea name="opis" required></textarea>
-        
-        <label for="rok_wydania">Rok wydania:</label>
-        <input type="number" name="rok_wydania" required>
-        
-        <label for="gatunek">Gatunek:</label>
-        <input type="text" name="gatunek" required>
-        
-        <label for="rezyser">Reżyser:</label>
-        <input type="text" name="rezyser" required>
-        
-        <label for="autor">Autor:</label>
-        <input type="text" name="autor" required>
-        
-        <label for="ocena">Ocena:</label>
-        <input type="number" step="0.1" name="ocena" required>
-        
-        <button type="submit">Dodaj film</button>
-    </form>
+<form action="add_films.php" method="post">
+    <label for="nazwa_filmu">Nazwa filmu:</label>
+    <input type="text" name="nazwa_filmu" required>
+    
+    <label for="opis">Opis:</label>
+    <textarea name="opis" required></textarea>
+    
+    <label for="rok_wydania">Rok wydania:</label>
+    <input type="number" name="rok_wydania" required>
+    
+    <label for="gatunek">Gatunek:</label>
+    <input type="text" name="gatunek" required>
+    
+    <label for="rezyser">Reżyser:</label>
+    <input type="text" name="rezyser" required>
+    
+    <label for="autor">Autor:</label>
+    <select name="autor" required>
+        <option value="">-- Wybierz autora --</option>
+        <?php
+
+$result = $conn->query("SELECT DISTINCT rezyser FROM filmy ORDER BY rezyser ASC");
+    
+while ($row = $result->fetch_assoc()) {
+    echo "<option value='" . htmlspecialchars($row['rezyser']) . "'>" . htmlspecialchars($row['rezyser']) . "</option>";
+}
+        ?>
+    </select>
+    
+    <label for="ocena">Ocena:</label>
+    <input type="number" step="0.1" name="ocena" required>
+    
+    <button type="submit">Dodaj film</button>
+</form>
 
     <div class="back-button">
         <a href="index.php?query=" class="btn-back">Powrót</a>

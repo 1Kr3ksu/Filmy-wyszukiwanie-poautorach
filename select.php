@@ -4,11 +4,11 @@ include "db_connection.php";
 if (isset($_GET['query'])) {
     $query = $_GET['query']; 
 
-    // Przygotowanie zapytania SQL wyszukującego po autorach i nazwie filmu
+   
     $stmt = $conn->prepare("
         SELECT * 
         FROM filmy 
-        WHERE autor LIKE ? OR nazwa_filmu LIKE ?
+        WHERE rezyser LIKE ? OR nazwa_filmu LIKE ?
     ");
     
     $searchTerm = "%" . $query . "%";
@@ -20,17 +20,16 @@ if (isset($_GET['query'])) {
     if ($result->num_rows > 0) {
         echo "<h2>Wyniki wyszukiwania:</h2>";
         while ($row = $result->fetch_assoc()) {
-            // Podświetlanie wyszukiwanego hasła w nazwie filmu i autorze
+            // Podświetlanie wyszukiwanego hasła w nazwie filmu i reżyserze
             $highlightedTitle = str_ireplace($query, "<mark>" . $query . "</mark>", htmlspecialchars($row['nazwa_filmu']));
-            $highlightedAuthor = str_ireplace($query, "<mark>" . $query . "</mark>", htmlspecialchars($row['autor']));
+            $highlightedDirector = str_ireplace($query, "<mark>" . $query . "</mark>", htmlspecialchars($row['rezyser']));
 
             echo "<div class='film'>";
             echo "<h3>" . $highlightedTitle . "</h3>";
             echo "<p>Opis: " . htmlspecialchars($row['opis']) . "</p>";
             echo "<p>Rok wydania: " . htmlspecialchars($row['rok_wydania']) . "</p>";
             echo "<p>Gatunek: " . htmlspecialchars($row['gatunek']) . "</p>";
-            echo "<p>Reżyser: " . htmlspecialchars($row['rezyser']) . "</p>";
-            echo "<p>Autor: " . $highlightedAuthor . "</p>"; 
+            echo "<p>Reżyser: " . $highlightedDirector . "</p>"; 
             echo "<p>Ocena: " . htmlspecialchars($row['ocena']) . "</p>";
             echo "<a href='edit.php?id=" . htmlspecialchars($row['id']) . "' class='btn-edit'>Edytuj</a>";
             echo "<a href='delete.php?id=" . htmlspecialchars($row['id']) . "' class='btn-delete' onclick='return confirm(\"Czy na pewno chcesz usunąć ten film?\");'>Usuń</a>";
